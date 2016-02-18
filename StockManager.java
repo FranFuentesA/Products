@@ -58,15 +58,15 @@ public class StockManager
      */
     public Product findProduct(int id)
     {
-        boolean condicion = false;
+        boolean encontradoProducto = false;
         Product busquedaDeProducto = null;
         int index = 0;
-        while( index < stock.size() && condicion == false)
+        while( index < stock.size() && encontradoProducto == false)
         {
             Product producto = stock.get(0);
             if(producto.getID() == id)
             {
-                condicion = true;
+                encontradoProducto = true;
                 busquedaDeProducto = producto;
             }
             index++;
@@ -83,16 +83,20 @@ public class StockManager
      */
     public int numberInStock(int id)
     {
-        int cantidadEnStock = 0;
-
-        for(Product producto: stock)
+        boolean encontradoProducto = false;
+        int indexBusqueda = 0;
+        int index = 0;
+        while( index < stock.size() && encontradoProducto == false)
         {
-            if(id == producto.getID())
+            Product producto = stock.get(0);
+            if(producto.getID() == id)
             {
-                cantidadEnStock = producto.getQuantity();
-            }                
+                encontradoProducto = true;
+                indexBusqueda = producto.getQuantity();
+            }
+            index++;
         }
-        return cantidadEnStock; 
+        return  indexBusqueda;
     }
 
     /**
