@@ -42,11 +42,25 @@ public class StockManager
     /**
      * Try to find a product in the stock with the given id.
      * @return The identified product, or null if there is none
-     *         with a matching ID.
+     * with a matching ID.
+     * 
      */
     public Product findProduct(int id)
     {
-        return null;
+        boolean condicion = false;
+        Product busquedaDeProducto = null;
+        int index = 0;
+        while( index < stock.size() && condicion == false)
+        {
+            Product producto = stock.get(0);
+            if(producto.getID() == id)
+            {
+                condicion = true;
+                busquedaDeProducto = producto;
+            }
+            index++;
+        }
+        return busquedaDeProducto;
     }
 
     /**
@@ -68,6 +82,6 @@ public class StockManager
     {
         for (Product producto : stock) {
             System.out.println(producto.toString());
-       }
+        }
     }
 }
